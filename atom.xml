@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>ROSNA</title>
+  <title>ROSENA</title>
   
   <subtitle>This is canaan blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://alphonse-xu.github.io/"/>
-  <updated>2020-01-22T14:23:15.879Z</updated>
+  <updated>2020-01-24T23:13:46.008Z</updated>
   <id>https://alphonse-xu.github.io/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>about</title>
+    <link href="https://alphonse-xu.github.io/2020/01/24/about/"/>
+    <id>https://alphonse-xu.github.io/2020/01/24/about/</id>
+    <published>2020-01-24T15:13:45.000Z</published>
+    <updated>2020-01-24T23:13:46.008Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
