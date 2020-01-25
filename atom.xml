@@ -5,9 +5,9 @@
   <subtitle>This is canaan blog</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://alphonse-xu.github.io/"/>
-  <updated>2020-01-24T23:13:46.008Z</updated>
-  <id>https://alphonse-xu.github.io/</id>
+  <link href="canaan.website/"/>
+  <updated>2020-01-25T23:14:30.142Z</updated>
+  <id>canaan.website/</id>
   
   <author>
     <name>owen xu</name>
@@ -17,13 +17,48 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>about</title>
-    <link href="https://alphonse-xu.github.io/2020/01/24/about/"/>
-    <id>https://alphonse-xu.github.io/2020/01/24/about/</id>
-    <published>2020-01-24T15:13:45.000Z</published>
-    <updated>2020-01-24T23:13:46.008Z</updated>
+    <title>helloworld</title>
+    <link href="canaan.website/2020/01/25/helloworld/"/>
+    <id>canaan.website/2020/01/25/helloworld/</id>
+    <published>2020-01-25T15:00:57.000Z</published>
+    <updated>2020-01-25T23:14:30.142Z</updated>
+    
+    <content type="html"><![CDATA[<p>欢迎来到我的博客！我是迦南君。我将会在这里分享我的一切！</p><p>Welcome to my blog,powered by<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is my first post. The theme is Ayer.If you like it,follow it-<a href="https://shen-yu.gitee.io/2019/ayer/" target="_blank" rel="noopener">Ayer</a>.</p><p>Thanks my dear girlfriend rosena,with you company and love.</p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;p&gt;欢迎来到我的博客！我是迦南君。我将会在这里分享我的一切！&lt;/p&gt;
+&lt;p&gt;Welcome to my blog,powered by&lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This
+      
+    
+    </summary>
+    
+    
+      <category term="其他" scheme="canaan.website/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="其他" scheme="canaan.website/tags/%E5%85%B6%E4%BB%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>about</title>
+    <link href="canaan.website/2020/01/24/about/"/>
+    <id>canaan.website/2020/01/24/about/</id>
+    <published>2020-01-24T15:13:45.000Z</published>
+    <updated>2020-01-25T23:04:39.202Z</updated>
+    
+    <content type="html"><![CDATA[<p>….</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;….&lt;/p&gt;
+
+      
     
     </summary>
     

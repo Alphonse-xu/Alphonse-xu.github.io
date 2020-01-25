@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>helloworld</title>
+    <url>/2020/01/25/helloworld/</url>
+    <content><![CDATA[<p>欢迎来到我的博客！我是迦南君。我将会在这里分享我的一切！</p>
+<p>Welcome to my blog,powered by<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is my first post. The theme is Ayer.If you like it,follow it-<a href="https://shen-yu.gitee.io/2019/ayer/" target="_blank" rel="noopener">Ayer</a>.</p>
+<p>Thanks my dear girlfriend rosena,with you company and love.</p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>about</title>
     <url>/2020/01/24/about/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>….</p>
+]]></content>
   </entry>
 </search>
