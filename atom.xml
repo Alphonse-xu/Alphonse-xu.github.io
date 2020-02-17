@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://canaan.website/"/>
-  <updated>2020-01-26T21:19:27.003Z</updated>
+  <updated>2020-01-27T21:35:15.929Z</updated>
   <id>http://canaan.website/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>GameDesignDoc</title>
+    <link href="http://canaan.website/2020/01/27/GameDesignDoc/"/>
+    <id>http://canaan.website/2020/01/27/GameDesignDoc/</id>
+    <published>2020-01-27T13:35:15.000Z</published>
+    <updated>2020-01-27T21:35:15.929Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>win_software</title>
+    <link href="http://canaan.website/2020/01/27/win-software/"/>
+    <id>http://canaan.website/2020/01/27/win-software/</id>
+    <published>2020-01-27T13:33:58.000Z</published>
+    <updated>2020-01-27T21:33:58.149Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>helloworld</title>
     <link href="http://canaan.website/2020/01/25/helloworld/"/>
     <id>http://canaan.website/2020/01/25/helloworld/</id>
-    <published>2020-01-25T07:00:00.000Z</published>
-    <updated>2020-01-26T21:19:27.003Z</updated>
+    <published>2020-01-25T23:00:57.475Z</published>
+    <updated>2020-01-26T21:48:08.807Z</updated>
     
     <content type="html"><![CDATA[<p>欢迎来到我的博客！我是迦南君。我将会在这里分享我的一切！</p><p>Welcome to my blog,powered by<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is my first post. The theme is Ayer.If you like it,follow it-<a href="https://shen-yu.gitee.io/2019/ayer/" target="_blank" rel="noopener">Ayer</a>.</p><p>Thanks my dear girlfriend rosena,with you company and love.</p>]]></content>
     
@@ -45,10 +75,10 @@
   
   <entry>
     <title>about me</title>
-    <link href="http://canaan.website/2020/01/23/about/"/>
-    <id>http://canaan.website/2020/01/23/about/</id>
-    <published>2020-01-23T23:13:00.000Z</published>
-    <updated>2020-01-26T21:22:12.914Z</updated>
+    <link href="http://canaan.website/2020/01/24/about/"/>
+    <id>http://canaan.website/2020/01/24/about/</id>
+    <published>2020-01-24T23:13:46.008Z</published>
+    <updated>2020-01-26T21:47:40.419Z</updated>
     
     <content type="html"><![CDATA[<p>GitHub: alphonse-xu</p><p>Email: <a href="mailto:canaan@canaan.website">canaan@canaan.website</a></p>]]></content>
     
