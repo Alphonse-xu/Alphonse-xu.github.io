@@ -1,7 +1,12 @@
 ---
-title: about
-date: 2020-01-24 23:13:45
+title: about me
 tags:
+  - 其他
+categories:
+  - 其他
+author: canaan
 ---
 
-....
+GitHub: alphonse-xu
+
+Email: canaan@canaan.website
