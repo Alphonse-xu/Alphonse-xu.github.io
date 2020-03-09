@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://canaan.website/"/>
-  <updated>2020-02-21T21:38:48.365Z</updated>
+  <updated>2020-03-09T20:36:33.906Z</updated>
   <id>http://canaan.website/</id>
   
   <author>
@@ -15,6 +15,120 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C++ Impl</title>
+    <link href="http://canaan.website/2020/03/09/cppimpl/"/>
+    <id>http://canaan.website/2020/03/09/cppimpl/</id>
+    <published>2020-03-09T12:27:26.000Z</published>
+    <updated>2020-03-09T20:36:33.906Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="C-编程模式：Impl"><a href="#C-编程模式：Impl" class="headerlink" title="C++编程模式：Impl"></a>C++编程模式：Impl</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近参与制作游戏需要跨平台，发现windows和ps4的API完全不可以通用。为了代码复用，学习了一种编程模式Impl，可以较好的解决这个问题。</p><h2 id="什么是Impl"><a href="#什么是Impl" class="headerlink" title="什么是Impl"></a>什么是Impl</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;C-编程模式：Impl&quot;&gt;&lt;a href=&quot;#C-编程模式：Impl&quot; class=&quot;headerlink&quot; title=&quot;C++编程模式：Impl&quot;&gt;&lt;/a&gt;C++编程模式：Impl&lt;/h1&gt;&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;he
+      
+    
+    </summary>
+    
+    
+      <category term="CPP" scheme="http://canaan.website/categories/CPP/"/>
+    
+    
+      <category term="游戏开发" scheme="http://canaan.website/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="编程技术" scheme="http://canaan.website/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="CPP" scheme="http://canaan.website/tags/CPP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C++ Bitmap</title>
+    <link href="http://canaan.website/2020/03/09/cppbitmap/"/>
+    <id>http://canaan.website/2020/03/09/cppbitmap/</id>
+    <published>2020-03-09T12:27:12.000Z</published>
+    <updated>2020-03-09T20:36:25.696Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="C-大数据存储-Bitmap"><a href="#C-大数据存储-Bitmap" class="headerlink" title="C++大数据存储  Bitmap"></a>C++大数据存储  Bitmap</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近参与游戏开发遇到了需要保存用户每次的按键。原本打算定义一个结构体，但是了解到有内存占用更少的方法，这就是Bitmap。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;C-大数据存储-Bitmap&quot;&gt;&lt;a href=&quot;#C-大数据存储-Bitmap&quot; class=&quot;headerlink&quot; title=&quot;C++大数据存储  Bitmap&quot;&gt;&lt;/a&gt;C++大数据存储  Bitmap&lt;/h1&gt;&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="CPP" scheme="http://canaan.website/categories/CPP/"/>
+    
+    
+      <category term="游戏开发" scheme="http://canaan.website/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="编程技术" scheme="http://canaan.website/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="CPP" scheme="http://canaan.website/tags/CPP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>这是另一种GDD的编写模板</title>
+    <link href="http://canaan.website/2020/03/09/myGDD/"/>
+    <id>http://canaan.website/2020/03/09/myGDD/</id>
+    <published>2020-03-09T11:57:08.000Z</published>
+    <updated>2020-03-09T20:00:56.950Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><p>Game Title</p><p>Game Design Document</p><hr><p>Changelog</p><table><thead><tr><th>Date of change</th><th>Change description</th><th>Developer Name</th></tr></thead><tbody><tr><td>2020</td><td>NOTHING</td><td>CANAAN</td></tr><tr><td></td><td></td><td></td></tr></tbody></table><hr><p>Table of Contents</p><p>Changelog        2</p><p>Table of Contents        3</p><p>Summary        5</p><p>Story        6</p><p>Gameplay        7</p><p>Levels        8</p><p>Art        9</p><p>UI, Systems &amp; Options        10</p><p>Audio        11</p><p>Analysis        12</p><p>Target        13</p><p>Marketing        14</p><p>Development Plan        15</p><hr><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Describe the game in 2-5 sentences.</p><p>Unique Features</p><p>List 2-5 unique selling features of your game.</p><p>MVP</p><p>Describe the minimal viable product you’ll be delivering.</p><hr><p>Story Characters</p><p>Description</p><p>Setting</p><p>Description</p><p>Narrative</p><p>Description</p><hr><h2 id="Gameplay-Design-Pillars-List-and-explain"><a href="#Gameplay-Design-Pillars-List-and-explain" class="headerlink" title="Gameplay Design Pillars List and explain"></a>Gameplay Design Pillars List and explain</h2><p>Core Loop</p><p>Core gameplay loop of the game.</p><p>Mechanics</p><p>List all relevant mechanics and their use</p><p>Dynamics</p><p>List and explain how mechanics tie into this</p><p>Additional sections (Optional)</p><p>List and explain</p><hr><h2 id="Levels"><a href="#Levels" class="headerlink" title="Levels"></a>Levels</h2><p>Level Progression<br>How the player progresses through the game.</p><p>Environments</p><p>Description</p><p>Link to Level Design Document</p><p>Link</p><hr><h2 id="Art"><a href="#Art" class="headerlink" title="Art"></a>Art</h2><p>Summary<br>Describe and explain</p><p>Link to Art Bible</p><p>Link</p><hr><h2 id="UI-Systems-amp-Options"><a href="#UI-Systems-amp-Options" class="headerlink" title="UI, Systems &amp; Options"></a>UI, Systems &amp; Options</h2><p>UI</p><p>Description/link to additional documentation</p><p>Systems</p><p>Description/link to additional documentation</p><p>Options &amp; Controls</p><p>Description/link to additional documentation</p><hr><h2 id="Audio"><a href="#Audio" class="headerlink" title="Audio"></a>Audio</h2><p>Summary</p><p>Describe and explain</p><p>Link to Audio Document</p><p>Link</p><hr><h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h2><p>Market/Competitor Analysis</p><p>Top competitors, market status, conclusions (can link to outside document)</p><p>Technical Analysis</p><p>Experimental features, used tech (can link to outside document)</p><p>Legal Analysis</p><p>Trademarked/copyrighted material…</p><hr><h2 id="Target"><a href="#Target" class="headerlink" title="Target"></a>Target</h2><p>Target Audience</p><p>Describe and explain</p><p>Target Device</p><p>Describe and explain</p><p>Target Budget</p><p>Describe and explain</p><hr><h2 id="Marketing"><a href="#Marketing" class="headerlink" title="Marketing"></a>Marketing</h2><p>Promotions</p><p>Describe and explain</p><p>Community</p><p>Describe and explain</p><hr><h2 id="Development-Plan"><a href="#Development-Plan" class="headerlink" title="Development Plan"></a>Development Plan</h2><p>How will the game be made?</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;模板&quot;&gt;&lt;a href=&quot;#模板&quot; class=&quot;headerlink&quot; title=&quot;模板&quot;&gt;&lt;/a&gt;模板&lt;/h1&gt;&lt;p&gt;Game Title&lt;/p&gt;
+&lt;p&gt;Game Design Document&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Changelog&lt;/p&gt;
+&lt;tabl
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode刷题记录：1.两数之和</title>
+    <link href="http://canaan.website/2020/02/21/Leetcode1/"/>
+    <id>http://canaan.website/2020/02/21/Leetcode1/</id>
+    <published>2020-02-21T13:55:26.000Z</published>
+    <updated>2020-03-09T20:26:22.885Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p><h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><ol><li>暴力搜索</li></ol><p>遍历每个元素 xxx，并查找是否存在一个值与 target−xtarget - xtarget−x 相等的目标元素。</p><p>执行用时：136ms</p><p>内存消耗：9.4mb</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        for(int i &#x3D; 0;i &lt; nums.size() - 1; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int side &#x3D; target - nums[i];</span><br><span class="line">            for(int j &#x3D; i + 1; j &lt; nums.size(); j++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(nums[j] &#x3D;&#x3D; side)</span><br><span class="line">                &#123;;</span><br><span class="line">                    return &#123;i,j&#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>复杂度分析：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度：O(n^2)</span><br><span class="line">对于每个元素，我们试图通过遍历数组的其余部分来寻找它所对应的目标元素，这将耗费 O(n) 的时间。因此时间复杂度为 O(n^2)</span><br><span class="line"></span><br><span class="line">空间复杂度：O(1)</span><br></pre></td></tr></table></figure><ol start="2"><li>两遍哈希表查找</li></ol><p>通过以空间换取速度的方式，我们可以将查找时间从 O(n)O(n)O(n) 降低到 O(1)O(1)O(1)。哈希表正是为此目的而构建的，它支持以 近似 恒定的时间进行快速查找。我用“近似”来描述，是因为一旦出现冲突，查找用时可能会退化到 O(n)O(n)O(n)。但只要你仔细地挑选哈希函数，在哈希表中进行查找的用时应当被摊销为 O(1)O(1)O(1)。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        unordered_map&lt;int,int&gt; numMap;</span><br><span class="line">        for(int i &#x3D; 0;i &lt; nums.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            numMap[nums[i]] &#x3D; i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for(int i &#x3D; 0;i &lt; nums.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(numMap.find(target - nums[i]) !&#x3D; numMap.end() &amp;&amp; numMap[target - nums[i]] !&#x3D; i)</span><br><span class="line">            &#123;</span><br><span class="line">                return &#123;i,numMap[target - nums[i]]&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>执行用时：136ms</p><p>内存消耗：9.4mb</p><p>复杂度分析：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度：O(n)，</span><br><span class="line">我们把包含有 n 个元素的列表遍历两次。由于哈希表将查找时间缩短到 O(1)，所以时间复杂度为 O(n)</span><br><span class="line"></span><br><span class="line">空间复杂度：O(n)</span><br><span class="line">所需的额外空间取决于哈希表中存储的元素数量，该表中存储了 n 个元素。</span><br></pre></td></tr></table></figure><p>方法三：一遍哈希表</p><p>事实证明，我们可以一次完成。在进行迭代并将元素插入到表中的同时，我们还会回过头来检查表中是否已经存在当前元素所对应的目标元素。如果它存在，那我们已经找到了对应解，并立即将其返回。</p><p>执行用时：136ms</p><p>内存消耗：9.4mb</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        unordered_map&lt;int,int&gt; m;</span><br><span class="line">        </span><br><span class="line">        for(int i &#x3D; 0;i &lt; nums.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int side &#x3D; target - nums[i];</span><br><span class="line">            if(m.find(side) !&#x3D; m.end())</span><br><span class="line">            &#123;</span><br><span class="line">                return &#123;m[side], i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            m[nums[i]] &#x3D; i;</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>还有一种貌似用时更快的写法</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        unordered_map&lt;int, int&gt; m;</span><br><span class="line">        vector&lt;int&gt; res;</span><br><span class="line">        for(int i &#x3D; 0; i&lt; nums.size(); ++i)&#123;</span><br><span class="line">            if(m.find(target-nums[i])&#x3D;&#x3D;m.end())&#123;</span><br><span class="line">                m[nums[i]]&#x3D;i;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                res.push_back(m[target-nums[i]]);</span><br><span class="line">                res.push_back(i);</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>复杂度分析：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度：O(n)</span><br><span class="line">我们只遍历了包含有 n 个元素的列表一次。在表中进行的每次查找只花费 O(1)O(1)O(1) 的时间</span><br><span class="line"></span><br><span class="line">空间复杂度：O(n)</span><br><span class="line">所需的额外空间取决于哈希表中存储的元素数量，该表最多需要存储 n 个元素</span><br></pre></td></tr></table></figure><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>哈希表在内存消耗有限增大的情况下大大提高了查找速度。大数据快查还是用哈希表较好。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h1&gt;&lt;p&gt;给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输
+      
+    
+    </summary>
+    
+    
+      <category term="Leetcode" scheme="http://canaan.website/categories/Leetcode/"/>
+    
+    
+      <category term="Leetcode" scheme="http://canaan.website/tags/Leetcode/"/>
+    
+      <category term="简单" scheme="http://canaan.website/tags/%E7%AE%80%E5%8D%95/"/>
+    
+  </entry>
   
   <entry>
     <title>如何编写游戏设计文档</title>
@@ -45,17 +159,31 @@
   </entry>
   
   <entry>
-    <title>win_software</title>
+    <title>Windows安装软件清单</title>
     <link href="http://canaan.website/2020/01/27/win-software/"/>
     <id>http://canaan.website/2020/01/27/win-software/</id>
     <published>2020-01-27T13:33:58.000Z</published>
-    <updated>2020-01-27T21:33:58.149Z</updated>
+    <updated>2020-03-09T19:46:25.133Z</updated>
+    
+    <content type="html"><![CDATA[<p>Windows系统缺少一些软件，还不能做到开箱即用。总结一些常用软件，方便重装系统。</p><h2 id="影音"><a href="#影音" class="headerlink" title="影音"></a>影音</h2><ol><li>网易云音乐</li><li>QQ音乐</li><li>Potplayer</li><li>KODI</li><li>OBS </li></ol><h2 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h2><ol><li>扣钉</li><li>Visual Studio </li><li>Visual Studio Code</li><li>Git</li><li>Unity3D</li><li>Unreal</li></ol><h2 id="办公编辑"><a href="#办公编辑" class="headerlink" title="办公编辑"></a>办公编辑</h2><ol><li>OFFICE全家桶</li><li>Google全家桶</li><li>Adobe全家桶</li><li>格式工厂</li></ol><h2 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h2><p>1.有道词典<br>2.欧陆词典</p><h2 id="快捷工具"><a href="#快捷工具" class="headerlink" title="快捷工具"></a>快捷工具</h2><ol><li>搜索Everything</li><li>Ditto</li><li></li></ol><h2 id="其他工具"><a href="#其他工具" class="headerlink" title="其他工具"></a>其他工具</h2><ol><li>Rescue pro</li><li>VM Virtualbox</li><li>bandi zip</li><li>Discord</li></ol><h2 id="游戏"><a href="#游戏" class="headerlink" title="游戏"></a>游戏</h2><ol><li>GOG</li><li>Steam</li><li>UBI</li><li>Epic</li><li>Battlenet</li><li>Origin</li></ol><h2 id="下载工具"><a href="#下载工具" class="headerlink" title="下载工具"></a>下载工具</h2><ol><li>百度网盘</li><li>迅雷极速版</li><li>Free download manager</li><li>youtube downloader(python)</li></ol>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;p&gt;Windows系统缺少一些软件，还不能做到开箱即用。总结一些常用软件，方便重装系统。&lt;/p&gt;
+&lt;h2 id=&quot;影音&quot;&gt;&lt;a href=&quot;#影音&quot; class=&quot;headerlink&quot; title=&quot;影音&quot;&gt;&lt;/a&gt;影音&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;网易云音乐&lt;/li&gt;
+&lt;li
+      
     
     </summary>
     
     
+      <category term="其他" scheme="http://canaan.website/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="-其他" scheme="http://canaan.website/tags/%E5%85%B6%E4%BB%96/"/>
     
   </entry>
   

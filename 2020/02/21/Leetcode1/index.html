@@ -6,7 +6,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Windows安装软件清单 |  ROSENA
+    Leetcode刷题记录：1.两数之和 |  ROSENA
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -32,7 +32,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-win-software" class="article article-type-post" itemscope
+  <article id="post-Leetcode1" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -40,7 +40,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Windows安装软件清单
+  Leetcode刷题记录：1.两数之和
 </h1>
   
 
@@ -49,12 +49,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/01/27/win-software/" class="article-date">
-  <time datetime="2020-01-27T13:33:58.000Z" itemprop="datePublished">2020-01-27</time>
+      <a href="/2020/02/21/Leetcode1/" class="article-date">
+  <time datetime="2020-02-21T13:55:26.000Z" itemprop="datePublished">2020-02-21</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
+    <a class="article-category-link" href="/categories/Leetcode/">Leetcode</a>
   </div>
 
       
@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">135字</span>
+            <span class="post-count">993字</span>
         </span>
     </span>
 
@@ -73,7 +73,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1分钟</span>
+            <span class="post-count">4分钟</span>
         </span>
     </span>
 </div>
@@ -99,54 +99,42 @@
       
 
       
-      <p>Windows系统缺少一些软件，还不能做到开箱即用。总结一些常用软件，方便重装系统。</p>
-<h2 id="影音"><a href="#影音" class="headerlink" title="影音"></a>影音</h2><ol>
-<li>网易云音乐</li>
-<li>QQ音乐</li>
-<li>Potplayer</li>
-<li>KODI</li>
-<li>OBS </li>
+      <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><ol>
+<li>暴力搜索</li>
 </ol>
-<h2 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h2><ol>
-<li>扣钉</li>
-<li>Visual Studio </li>
-<li>Visual Studio Code</li>
-<li>Git</li>
-<li>Unity3D</li>
-<li>Unreal</li>
+<p>遍历每个元素 xxx，并查找是否存在一个值与 target−xtarget - xtarget−x 相等的目标元素。</p>
+<p>执行用时：136ms</p>
+<p>内存消耗：9.4mb</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        for(int i &#x3D; 0;i &lt; nums.size() - 1; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int side &#x3D; target - nums[i];</span><br><span class="line">            for(int j &#x3D; i + 1; j &lt; nums.size(); j++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(nums[j] &#x3D;&#x3D; side)</span><br><span class="line">                &#123;;</span><br><span class="line">                    return &#123;i,j&#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>复杂度分析：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度：O(n^2)</span><br><span class="line">对于每个元素，我们试图通过遍历数组的其余部分来寻找它所对应的目标元素，这将耗费 O(n) 的时间。因此时间复杂度为 O(n^2)</span><br><span class="line"></span><br><span class="line">空间复杂度：O(1)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>两遍哈希表查找</li>
 </ol>
-<h2 id="办公编辑"><a href="#办公编辑" class="headerlink" title="办公编辑"></a>办公编辑</h2><ol>
-<li>OFFICE全家桶</li>
-<li>Google全家桶</li>
-<li>Adobe全家桶</li>
-<li>格式工厂</li>
-</ol>
-<h2 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h2><p>1.有道词典<br>2.欧陆词典</p>
-<h2 id="快捷工具"><a href="#快捷工具" class="headerlink" title="快捷工具"></a>快捷工具</h2><ol>
-<li>搜索Everything</li>
-<li>Ditto</li>
-<li></li>
-</ol>
-<h2 id="其他工具"><a href="#其他工具" class="headerlink" title="其他工具"></a>其他工具</h2><ol>
-<li>Rescue pro</li>
-<li>VM Virtualbox</li>
-<li>bandi zip</li>
-<li>Discord</li>
-</ol>
-<h2 id="游戏"><a href="#游戏" class="headerlink" title="游戏"></a>游戏</h2><ol>
-<li>GOG</li>
-<li>Steam</li>
-<li>UBI</li>
-<li>Epic</li>
-<li>Battlenet</li>
-<li>Origin</li>
-</ol>
-<h2 id="下载工具"><a href="#下载工具" class="headerlink" title="下载工具"></a>下载工具</h2><ol>
-<li>百度网盘</li>
-<li>迅雷极速版</li>
-<li>Free download manager</li>
-<li>youtube downloader(python)</li>
-</ol>
+<p>通过以空间换取速度的方式，我们可以将查找时间从 O(n)O(n)O(n) 降低到 O(1)O(1)O(1)。哈希表正是为此目的而构建的，它支持以 近似 恒定的时间进行快速查找。我用“近似”来描述，是因为一旦出现冲突，查找用时可能会退化到 O(n)O(n)O(n)。但只要你仔细地挑选哈希函数，在哈希表中进行查找的用时应当被摊销为 O(1)O(1)O(1)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        unordered_map&lt;int,int&gt; numMap;</span><br><span class="line">        for(int i &#x3D; 0;i &lt; nums.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            numMap[nums[i]] &#x3D; i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for(int i &#x3D; 0;i &lt; nums.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(numMap.find(target - nums[i]) !&#x3D; numMap.end() &amp;&amp; numMap[target - nums[i]] !&#x3D; i)</span><br><span class="line">            &#123;</span><br><span class="line">                return &#123;i,numMap[target - nums[i]]&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>执行用时：136ms</p>
+<p>内存消耗：9.4mb</p>
+<p>复杂度分析：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度：O(n)，</span><br><span class="line">我们把包含有 n 个元素的列表遍历两次。由于哈希表将查找时间缩短到 O(1)，所以时间复杂度为 O(n)</span><br><span class="line"></span><br><span class="line">空间复杂度：O(n)</span><br><span class="line">所需的额外空间取决于哈希表中存储的元素数量，该表中存储了 n 个元素。</span><br></pre></td></tr></table></figure>
+
+<p>方法三：一遍哈希表</p>
+<p>事实证明，我们可以一次完成。在进行迭代并将元素插入到表中的同时，我们还会回过头来检查表中是否已经存在当前元素所对应的目标元素。如果它存在，那我们已经找到了对应解，并立即将其返回。</p>
+<p>执行用时：136ms</p>
+<p>内存消耗：9.4mb</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        unordered_map&lt;int,int&gt; m;</span><br><span class="line">        </span><br><span class="line">        for(int i &#x3D; 0;i &lt; nums.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int side &#x3D; target - nums[i];</span><br><span class="line">            if(m.find(side) !&#x3D; m.end())</span><br><span class="line">            &#123;</span><br><span class="line">                return &#123;m[side], i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            m[nums[i]] &#x3D; i;</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>还有一种貌似用时更快的写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        unordered_map&lt;int, int&gt; m;</span><br><span class="line">        vector&lt;int&gt; res;</span><br><span class="line">        for(int i &#x3D; 0; i&lt; nums.size(); ++i)&#123;</span><br><span class="line">            if(m.find(target-nums[i])&#x3D;&#x3D;m.end())&#123;</span><br><span class="line">                m[nums[i]]&#x3D;i;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                res.push_back(m[target-nums[i]]);</span><br><span class="line">                res.push_back(i);</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>复杂度分析：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度：O(n)</span><br><span class="line">我们只遍历了包含有 n 个元素的列表一次。在表中进行的每次查找只花费 O(1)O(1)O(1) 的时间</span><br><span class="line"></span><br><span class="line">空间复杂度：O(n)</span><br><span class="line">所需的额外空间取决于哈希表中存储的元素数量，该表最多需要存储 n 个元素</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>哈希表在内存消耗有限增大的情况下大大提高了查找速度。大数据快查还是用哈希表较好。</p>
 
       
       <!-- 打赏 -->
@@ -157,10 +145,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://canaan.website/2020/01/27/win-software/" data-id="ck7kvpc3f0009r8u94rbta6m2"
+      <a data-url="http://canaan.website/2020/02/21/Leetcode1/" data-id="ck7kvpc360002r8u9f3zh58tb"
         class="article-share-link">分享</a>
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">-其他</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/" rel="tag">Leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%80%E5%8D%95/" rel="tag">简单</a></li></ul>
 
     </footer>
 
@@ -170,19 +158,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/02/21/GDDTemp/" class="article-nav-link">
+      <a href="/2020/03/09/myGDD/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            如何编写游戏设计文档
+            这是另一种GDD的编写模板
           
         </div>
       </a>
     
     
-      <a href="/2020/01/25/helloworld/" class="article-nav-link">
+      <a href="/2020/02/21/GDDTemp/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">helloworld</div>
+        <div class="article-nav-title">如何编写游戏设计文档</div>
       </a>
     
   </nav>
