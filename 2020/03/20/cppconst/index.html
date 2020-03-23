@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    C++ Const关键字总结 |  ROSENA
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<script src="/js/pace.min.js"></script>
+
+
+  
+
+  
+
+<link rel="alternate" href="/atom.xml" title="ROSENA" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content">
+      <section class="outer">
+  <article id="post-cppconst" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  C++ Const关键字总结
+</h1>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/20/cppconst/" class="article-date">
+  <time datetime="2020-03-20T02:49:01.000Z" itemprop="datePublished">2020-03-20</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CPP/">CPP</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.7k字</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">6分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="C-Const-关键字"><a href="#C-Const-关键字" class="headerlink" title="C++ Const 关键字"></a>C++ Const 关键字</h1><p>Const 是修饰内置类型变量，自定义对象，成员函数，返回值，函数参数。</p>
+<h2 id="1-内置类型变量"><a href="#1-内置类型变量" class="headerlink" title="1.内置类型变量"></a>1.内置类型变量</h2><p>Const修饰全局变量时，编译器不允许修改定义好的变量。如果修改，则报错。</p>
+<p>Const修饰局部变量时，编译器仍然不允许直接赋值修改，但是可以通过地址修改值。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>  a = <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span>  *p = (<span class="keyword">int</span>*)&amp;a; <span class="comment">//如果没有显示转换会报错：错误C2440: 无法从“ const int *”转换为“int * ”</span></span><br><span class="line">*p = <span class="number">8</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;a;</span><br></pre></td></tr></table></figure>
+
+<p>调试可知a变量的值被改变为8，但是输出的结果仍然是 7。</p>
+<p>在使用变量名输出时，编译器会出现一种类似宏定义的功能一样的行为，将变量名替换为初始值。可见，const局部变量并不能做到真正的不变，而是编译器对其进行了一些优化行为，这导致了const局部变量与真实值产生了不一致。</p>
+<p>如果想获取修改后的const局部变量真实值，可以使用volatile关键字。volatile关键字使得程序每次直接去内存中读取变量值而不是读寄存器值，这个作用在解决一些不是程序而是由于别的原因修改了变量值时非常有用。</p>
+<h2 id="2-const-的指针与引用"><a href="#2-const-的指针与引用" class="headerlink" title="2.const 的指针与引用"></a>2.const 的指针与引用</h2><h3 id="const修饰指针"><a href="#const修饰指针" class="headerlink" title="const修饰指针"></a>const修饰指针</h3><p>指向常量的指针（pointer to const）/ (low-level const)</p>
+<p>自身是常量的指针（常量指针，const pointer）/ (top-level const)</p>
+<p>指针自身是一个对象，它的值为一个整数，表明指向对象的内存地址。因此指针长度所指向对象类型无关，在32位系统下为4字节，64位系统下为8字节。进而，指针本身是否是常量以及所指向的对象是否是常量就是两个独立的问题。</p>
+<h3 id="const修饰引用"><a href="#const修饰引用" class="headerlink" title="const修饰引用"></a>const修饰引用</h3><p>指向常量的引用（reference to const）</p>
+<p>没有 const reference，因为引用本身就是 const pointer</p>
+<h2 id="3-const修饰函数参数传递"><a href="#3-const修饰函数参数传递" class="headerlink" title="3. const修饰函数参数传递"></a>3. const修饰函数参数传递</h2><p>const修饰参数是为了防止函数体内可能会修改参数<strong>原始对象</strong>。因此，有三种情况可讨论：</p>
+<ol>
+<li><p>函数参数为值传递：值传递（pass-by-value）是传递一份参数的拷贝给函数，因此不论函数体代码如何运行，也只会修改拷贝而无法修改原始对象，这种情况不需要将参数声明为const。</p>
+</li>
+<li><p>函数参数为指针：指针传递（pass-by-pointer）只会进行浅拷贝，拷贝一份指针给函数，而不会拷贝一份原始对象。因此，给指针参数加上顶层const可以防止指针指向被篡改，加上底层const可以防止指向对象被篡改。</p>
+</li>
+<li><p>函数参数为引用：引用传递（pass-by-reference）有一个很重要的作用，由于引用就是对象的一个别名，因此不需要拷贝对象，减小了开销。这同时也导致可以通过修改引用直接修改原始对象（毕竟引用和原始对象其实是同一个东西），因此，大多数时候，推荐函数参数设置为pass-by-reference-to-const。给引用加上底层const，既可以减小拷贝开销，又可以防止修改底层所引用的对象。</p>
+</li>
+</ol>
+<h2 id="4-对于-const-修饰函数的返回值"><a href="#4-对于-const-修饰函数的返回值" class="headerlink" title="4.对于 const 修饰函数的返回值"></a>4.对于 const 修饰函数的返回值</h2><p>const修饰内置类型或者自定义类型的返回值，返回的值不能作为左值使用，既不能被赋值，也不能被修改。</p>
+<h2 id="5-const修饰成员函数"><a href="#5-const修饰成员函数" class="headerlink" title="5. const修饰成员函数"></a>5. const修饰成员函数</h2><p>const修饰成员函数，是防止成员函数修改类对象的内容。良好的类接口设计应该确保，如果一个成员函数功能上不需要修改对象的内容，该成员函数应该加上const修饰。</p>
+<p>如果const成员函数想修改成员变量值，可以用mutable修饰目标成员变量。</p>
+<p>注意：如果一个类对象为const 对象，语义上说明该对象的值不可改变，因此该const对象只能调用const成员函数，因为非const成员函数不能保证不修改对象值，编译器会禁止这种会造成隐患的行为。</p>
+<p>注意：const 关键字不能与 static 关键字同时使用，因为 static 关键字修饰静态成员函数，静态成员函数不含有 this 指针，即不能实例化，const 成员函数必须具体到某一实例。</p>
+<hr>
+<p>总结与举例</p>
+<ol>
+<li><p>修饰变量，说明该变量不可以被改变；</p>
+</li>
+<li><p>修饰指针，分为指向常量的指针（pointer to const）和自身是常量的指针（常量指针，const pointer）；</p>
+</li>
+<li><p>修饰引用，指向常量的引用（reference to const），用于形参类型，即避免了拷贝，又避免了函数对值的修改；</p>
+</li>
+<li><p>修饰成员函数，说明该成员函数内不能修改成员变量。</p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> a;                <span class="comment">// 常对象成员，只能在初始化列表赋值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 构造函数</span></span><br><span class="line">    A() : a(<span class="number">0</span>) &#123; &#125;;</span><br><span class="line">    A(<span class="keyword">int</span> x) : a(x) &#123; &#125;;        <span class="comment">// 初始化列表</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// const可用于对重载函数的区分</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span></span>;             <span class="comment">// 普通成员函数</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span> <span class="keyword">const</span></span>;       <span class="comment">// 常成员函数，不得修改类中的任何数据成员的值</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 对象</span></span><br><span class="line">    A b;                        <span class="comment">// 普通对象，可以调用全部成员函数、更新常成员变量</span></span><br><span class="line">    <span class="keyword">const</span> A a;                  <span class="comment">// 常对象，只能调用常成员函数</span></span><br><span class="line">    <span class="keyword">const</span> A *p = &amp;a;            <span class="comment">// 指针变量，指向常对象</span></span><br><span class="line">    <span class="keyword">const</span> A &amp;q = a;             <span class="comment">// 指向常对象的引用</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 指针</span></span><br><span class="line">    <span class="keyword">char</span> greeting[] = <span class="string">"Hello"</span>;</span><br><span class="line">    <span class="keyword">char</span>* p1 = greeting;                <span class="comment">// 指针变量，指向字符数组变量</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* p2 = greeting;          <span class="comment">// 指针变量，指向字符数组常量（const 后面是 char，说明指向的字符（char）不可改变）</span></span><br><span class="line">    <span class="keyword">char</span>* <span class="keyword">const</span> p3 = greeting;          <span class="comment">// 自身是常量的指针，指向字符数组变量（const 后面是 p3，说明 p3 指针自身不可改变）</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* <span class="keyword">const</span> p4 = greeting;    <span class="comment">// 自身是常量的指针，指向字符数组常量</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function1</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> Var)</span></span>;           <span class="comment">// 传递过来的参数在函数内不可变</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function2</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* Var)</span></span>;         <span class="comment">// 参数指针所指内容为常量</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function3</span><span class="params">(<span class="keyword">char</span>* <span class="keyword">const</span> Var)</span></span>;         <span class="comment">// 参数指针为常量</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function4</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; Var)</span></span>;          <span class="comment">// 引用参数在函数内为常量</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数返回值</span></span><br><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">int</span> <span class="title">function5</span><span class="params">()</span></span>;      <span class="comment">// 返回一个常数</span></span><br><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">int</span>* <span class="title">function6</span><span class="params">()</span></span>;     <span class="comment">// 返回一个指向常量的指针变量，使用：const int *p = function6();</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="keyword">const</span> <span class="title">function7</span><span class="params">()</span></span>;     <span class="comment">// 返回一个指向变量的常指针，使用：int* const p = function7();</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h2><p><a href="https://www.runoob.com/w3cnote/cpp-const-keyword.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/cpp-const-keyword.html</a></p>
+<p><a href="https://interview.huihut.com/#/?id=const-%e7%9a%84%e6%8c%87%e9%92%88%e4%b8%8e%e5%bc%95%e7%94%a8" target="_blank" rel="noopener">https://interview.huihut.com/#/?id=const-%e7%9a%84%e6%8c%87%e9%92%88%e4%b8%8e%e5%bc%95%e7%94%a8</a></p>
+<p><a href="https://blog.csdn.net/u011333734/article/details/81294043" target="_blank" rel="noopener">https://blog.csdn.net/u011333734/article/details/81294043</a></p>
+
+      
+      <!-- 打赏 -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canaan.website/2020/03/20/cppconst/" data-id="ck853jzpt000170u99x7x9rb0"
+        class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPP/" rel="tag">CPP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPP%E9%9D%A2%E8%AF%95/" rel="tag">CPP面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/" rel="tag">编程技术</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2020/03/20/gameInterview/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            gameInterview
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2020/03/09/cppimpl/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">C++ Impl</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        notify: false,
+        verify: false,
+        app_id: '',
+        app_key: '',
+        path: window.location.pathname,
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2020
+        owen xu
+      </li>
+      <li>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <ul class="list-inline">
+  <li>PV:<span id="busuanzi_value_page_pv"></span></li>
+  <li>UV:<span id="busuanzi_value_site_uv"></span></li>
+</ul>
+        
+      </li>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+    <div class="to_top">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+      </div>
+    </main>
+      <aside class="sidebar">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="ROSENA"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/01/25/helloworld">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">目录</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2020/01/24/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+      </aside>
+      <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+      
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto',
+    onClick: (e) => {
+      document.getElementById(e.target.innerText).scrollIntoView()
+      return false;
+    }
+  });
+</script>
+
+
+<script>
+  var ayerConfig = {
+    mathjax: true
+  }
+</script>
+
+
+<script src="/js/ayer.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+  </div>
+</body>
+
+</html>

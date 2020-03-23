@@ -63,6 +63,180 @@
     
     
     
+    <article id="post-gameInterview" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/20/gameInterview/"
+    >gameInterview</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/20/gameInterview/" class="article-date">
+  <time datetime="2020-03-20T15:49:50.000Z" itemprop="datePublished">2020-03-20</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h2 id="游戏开发方向学习与面试资源总结"><a href="#游戏开发方向学习与面试资源总结" class="headerlink" title="游戏开发方向学习与面试资源总结"></a>游戏开发方向学习与面试资源总结</h2><h2 id="1-网站"><a href="#1-网站" class="headerlink" title="1.网站"></a>1.网站</h2><p><a href="https://interview.huihut.com/#/?id=const" target="_blank" rel="noopener">https://interview.huihut.com/#/?id=const</a></p>
+
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canaan.website/2020/03/20/gameInterview/" data-id="ck853jzpm000070u9bo950v1i"
+        class="article-share-link">分享</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-cppconst" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/20/cppconst/"
+    >C++ Const关键字总结</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/20/cppconst/" class="article-date">
+  <time datetime="2020-03-20T02:49:01.000Z" itemprop="datePublished">2020-03-20</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/CPP/">CPP</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <h1 id="C-Const-关键字"><a href="#C-Const-关键字" class="headerlink" title="C++ Const 关键字"></a>C++ Const 关键字</h1><p>Const 是修饰内置类型变量，自定义对象，成员函数，返回值，函数参数。</p>
+<h2 id="1-内置类型变量"><a href="#1-内置类型变量" class="headerlink" title="1.内置类型变量"></a>1.内置类型变量</h2><p>Const修饰全局变量时，编译器不允许修改定义好的变量。如果修改，则报错。</p>
+<p>Const修饰局部变量时，编译器仍然不允许直接赋值修改，但是可以通过地址修改值。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>  a = <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span>  *p = (<span class="keyword">int</span>*)&amp;a; <span class="comment">//如果没有显示转换会报错：错误C2440: 无法从“ const int *”转换为“int * ”</span></span><br><span class="line">*p = <span class="number">8</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;a;</span><br></pre></td></tr></table></figure>
+
+<p>调试可知a变量的值被改变为8，但是输出的结果仍然是 7。</p>
+<p>在使用变量名输出时，编译器会出现一种类似宏定义的功能一样的行为，将变量名替换为初始值。可见，const局部变量并不能做到真正的不变，而是编译器对其进行了一些优化行为，这导致了const局部变量与真实值产生了不一致。</p>
+<p>如果想获取修改后的const局部变量真实值，可以使用volatile关键字。volatile关键字使得程序每次直接去内存中读取变量值而不是读寄存器值，这个作用在解决一些不是程序而是由于别的原因修改了变量值时非常有用。</p>
+<h2 id="2-const-的指针与引用"><a href="#2-const-的指针与引用" class="headerlink" title="2.const 的指针与引用"></a>2.const 的指针与引用</h2><h3 id="const修饰指针"><a href="#const修饰指针" class="headerlink" title="const修饰指针"></a>const修饰指针</h3><p>指向常量的指针（pointer to const）/ (low-level const)</p>
+<p>自身是常量的指针（常量指针，const pointer）/ (top-level const)</p>
+<p>指针自身是一个对象，它的值为一个整数，表明指向对象的内存地址。因此指针长度所指向对象类型无关，在32位系统下为4字节，64位系统下为8字节。进而，指针本身是否是常量以及所指向的对象是否是常量就是两个独立的问题。</p>
+<h3 id="const修饰引用"><a href="#const修饰引用" class="headerlink" title="const修饰引用"></a>const修饰引用</h3><p>指向常量的引用（reference to const）</p>
+<p>没有 const reference，因为引用本身就是 const pointer</p>
+<h2 id="3-const修饰函数参数传递"><a href="#3-const修饰函数参数传递" class="headerlink" title="3. const修饰函数参数传递"></a>3. const修饰函数参数传递</h2><p>const修饰参数是为了防止函数体内可能会修改参数<strong>原始对象</strong>。因此，有三种情况可讨论：</p>
+<ol>
+<li><p>函数参数为值传递：值传递（pass-by-value）是传递一份参数的拷贝给函数，因此不论函数体代码如何运行，也只会修改拷贝而无法修改原始对象，这种情况不需要将参数声明为const。</p>
+</li>
+<li><p>函数参数为指针：指针传递（pass-by-pointer）只会进行浅拷贝，拷贝一份指针给函数，而不会拷贝一份原始对象。因此，给指针参数加上顶层const可以防止指针指向被篡改，加上底层const可以防止指向对象被篡改。</p>
+</li>
+<li><p>函数参数为引用：引用传递（pass-by-reference）有一个很重要的作用，由于引用就是对象的一个别名，因此不需要拷贝对象，减小了开销。这同时也导致可以通过修改引用直接修改原始对象（毕竟引用和原始对象其实是同一个东西），因此，大多数时候，推荐函数参数设置为pass-by-reference-to-const。给引用加上底层const，既可以减小拷贝开销，又可以防止修改底层所引用的对象。</p>
+</li>
+</ol>
+<h2 id="4-对于-const-修饰函数的返回值"><a href="#4-对于-const-修饰函数的返回值" class="headerlink" title="4.对于 const 修饰函数的返回值"></a>4.对于 const 修饰函数的返回值</h2><p>const修饰内置类型或者自定义类型的返回值，返回的值不能作为左值使用，既不能被赋值，也不能被修改。</p>
+<h2 id="5-const修饰成员函数"><a href="#5-const修饰成员函数" class="headerlink" title="5. const修饰成员函数"></a>5. const修饰成员函数</h2><p>const修饰成员函数，是防止成员函数修改类对象的内容。良好的类接口设计应该确保，如果一个成员函数功能上不需要修改对象的内容，该成员函数应该加上const修饰。</p>
+<p>如果const成员函数想修改成员变量值，可以用mutable修饰目标成员变量。</p>
+<p>注意：如果一个类对象为const 对象，语义上说明该对象的值不可改变，因此该const对象只能调用const成员函数，因为非const成员函数不能保证不修改对象值，编译器会禁止这种会造成隐患的行为。</p>
+<p>注意：const 关键字不能与 static 关键字同时使用，因为 static 关键字修饰静态成员函数，静态成员函数不含有 this 指针，即不能实例化，const 成员函数必须具体到某一实例。</p>
+<hr>
+<p>总结与举例</p>
+<ol>
+<li><p>修饰变量，说明该变量不可以被改变；</p>
+</li>
+<li><p>修饰指针，分为指向常量的指针（pointer to const）和自身是常量的指针（常量指针，const pointer）；</p>
+</li>
+<li><p>修饰引用，指向常量的引用（reference to const），用于形参类型，即避免了拷贝，又避免了函数对值的修改；</p>
+</li>
+<li><p>修饰成员函数，说明该成员函数内不能修改成员变量。</p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> a;                <span class="comment">// 常对象成员，只能在初始化列表赋值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 构造函数</span></span><br><span class="line">    A() : a(<span class="number">0</span>) &#123; &#125;;</span><br><span class="line">    A(<span class="keyword">int</span> x) : a(x) &#123; &#125;;        <span class="comment">// 初始化列表</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// const可用于对重载函数的区分</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span></span>;             <span class="comment">// 普通成员函数</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span> <span class="keyword">const</span></span>;       <span class="comment">// 常成员函数，不得修改类中的任何数据成员的值</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 对象</span></span><br><span class="line">    A b;                        <span class="comment">// 普通对象，可以调用全部成员函数、更新常成员变量</span></span><br><span class="line">    <span class="keyword">const</span> A a;                  <span class="comment">// 常对象，只能调用常成员函数</span></span><br><span class="line">    <span class="keyword">const</span> A *p = &amp;a;            <span class="comment">// 指针变量，指向常对象</span></span><br><span class="line">    <span class="keyword">const</span> A &amp;q = a;             <span class="comment">// 指向常对象的引用</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 指针</span></span><br><span class="line">    <span class="keyword">char</span> greeting[] = <span class="string">"Hello"</span>;</span><br><span class="line">    <span class="keyword">char</span>* p1 = greeting;                <span class="comment">// 指针变量，指向字符数组变量</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* p2 = greeting;          <span class="comment">// 指针变量，指向字符数组常量（const 后面是 char，说明指向的字符（char）不可改变）</span></span><br><span class="line">    <span class="keyword">char</span>* <span class="keyword">const</span> p3 = greeting;          <span class="comment">// 自身是常量的指针，指向字符数组变量（const 后面是 p3，说明 p3 指针自身不可改变）</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* <span class="keyword">const</span> p4 = greeting;    <span class="comment">// 自身是常量的指针，指向字符数组常量</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function1</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span> Var)</span></span>;           <span class="comment">// 传递过来的参数在函数内不可变</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function2</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* Var)</span></span>;         <span class="comment">// 参数指针所指内容为常量</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function3</span><span class="params">(<span class="keyword">char</span>* <span class="keyword">const</span> Var)</span></span>;         <span class="comment">// 参数指针为常量</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">function4</span><span class="params">(<span class="keyword">const</span> <span class="keyword">int</span>&amp; Var)</span></span>;          <span class="comment">// 引用参数在函数内为常量</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数返回值</span></span><br><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">int</span> <span class="title">function5</span><span class="params">()</span></span>;      <span class="comment">// 返回一个常数</span></span><br><span class="line"><span class="function"><span class="keyword">const</span> <span class="keyword">int</span>* <span class="title">function6</span><span class="params">()</span></span>;     <span class="comment">// 返回一个指向常量的指针变量，使用：const int *p = function6();</span></span><br><span class="line"><span class="function"><span class="keyword">int</span>* <span class="keyword">const</span> <span class="title">function7</span><span class="params">()</span></span>;     <span class="comment">// 返回一个指向变量的常指针，使用：int* const p = function7();</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h2><p><a href="https://www.runoob.com/w3cnote/cpp-const-keyword.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/cpp-const-keyword.html</a></p>
+<p><a href="https://interview.huihut.com/#/?id=const-%e7%9a%84%e6%8c%87%e9%92%88%e4%b8%8e%e5%bc%95%e7%94%a8" target="_blank" rel="noopener">https://interview.huihut.com/#/?id=const-%e7%9a%84%e6%8c%87%e9%92%88%e4%b8%8e%e5%bc%95%e7%94%a8</a></p>
+<p><a href="https://blog.csdn.net/u011333734/article/details/81294043" target="_blank" rel="noopener">https://blog.csdn.net/u011333734/article/details/81294043</a></p>
+
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canaan.website/2020/03/20/cppconst/" data-id="ck853jzpt000170u99x7x9rb0"
+        class="article-share-link">分享</a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPP/" rel="tag">CPP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPP%E9%9D%A2%E8%AF%95/" rel="tag">CPP面试</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/" rel="tag">编程技术</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-cppimpl" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -105,7 +279,7 @@
       
 
       
-      <h1 id="C-编程模式：Impl"><a href="#C-编程模式：Impl" class="headerlink" title="C++编程模式：Impl"></a>C++编程模式：Impl</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近参与制作游戏需要跨平台，发现windows和ps4的API完全不可以通用。为了代码复用，学习了一种编程模式Impl，可以较好的解决这个问题。</p>
+      <h1 id="C-编程模式：Impl"><a href="#C-编程模式：Impl" class="headerlink" title="C++编程模式：Impl"></a>C++编程模式：Impl</h1><p>最近参与制作游戏需要跨平台，发现windows和ps4的API完全不可以通用。为了代码复用，学习了一种编程模式Impl，可以较好的解决这个问题。</p>
 <h2 id="什么是Impl"><a href="#什么是Impl" class="headerlink" title="什么是Impl"></a>什么是Impl</h2>
       
       <!-- 打赏 -->
@@ -406,10 +580,7 @@
 
       
       <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><ol>
-<li>暴力搜索</li>
-</ol>
-<p>遍历每个元素 xxx，并查找是否存在一个值与 target−xtarget - xtarget−x 相等的目标元素。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><h3 id="1-暴力搜索"><a href="#1-暴力搜索" class="headerlink" title="1. 暴力搜索"></a>1. 暴力搜索</h3><p>遍历每个元素 xxx，并查找是否存在一个值与 target−xtarget - xtarget−x 相等的目标元素。</p>
 <p>执行用时：136ms</p>
 <p>内存消耗：9.4mb</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        for(int i &#x3D; 0;i &lt; nums.size() - 1; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int side &#x3D; target - nums[i];</span><br><span class="line">            for(int j &#x3D; i + 1; j &lt; nums.size(); j++)</span><br><span class="line">            &#123;</span><br><span class="line">                if(nums[j] &#x3D;&#x3D; side)</span><br><span class="line">                &#123;;</span><br><span class="line">                    return &#123;i,j&#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -417,10 +588,7 @@
 <p>复杂度分析：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度：O(n^2)</span><br><span class="line">对于每个元素，我们试图通过遍历数组的其余部分来寻找它所对应的目标元素，这将耗费 O(n) 的时间。因此时间复杂度为 O(n^2)</span><br><span class="line"></span><br><span class="line">空间复杂度：O(1)</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>两遍哈希表查找</li>
-</ol>
-<p>通过以空间换取速度的方式，我们可以将查找时间从 O(n)O(n)O(n) 降低到 O(1)O(1)O(1)。哈希表正是为此目的而构建的，它支持以 近似 恒定的时间进行快速查找。我用“近似”来描述，是因为一旦出现冲突，查找用时可能会退化到 O(n)O(n)O(n)。但只要你仔细地挑选哈希函数，在哈希表中进行查找的用时应当被摊销为 O(1)O(1)O(1)。</p>
+<h3 id="2-两遍哈希表查找"><a href="#2-两遍哈希表查找" class="headerlink" title="2. 两遍哈希表查找"></a>2. 两遍哈希表查找</h3><p>通过以空间换取速度的方式，我们可以将查找时间从 O(n)O(n)O(n) 降低到 O(1)O(1)O(1)。哈希表正是为此目的而构建的，它支持以 近似 恒定的时间进行快速查找。我用“近似”来描述，是因为一旦出现冲突，查找用时可能会退化到 O(n)O(n)O(n)。但只要你仔细地挑选哈希函数，在哈希表中进行查找的用时应当被摊销为 O(1)O(1)O(1)。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        unordered_map&lt;int,int&gt; numMap;</span><br><span class="line">        for(int i &#x3D; 0;i &lt; nums.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            numMap[nums[i]] &#x3D; i;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for(int i &#x3D; 0;i &lt; nums.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            if(numMap.find(target - nums[i]) !&#x3D; numMap.end() &amp;&amp; numMap[target - nums[i]] !&#x3D; i)</span><br><span class="line">            &#123;</span><br><span class="line">                return &#123;i,numMap[target - nums[i]]&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>执行用时：136ms</p>
@@ -428,11 +596,10 @@
 <p>复杂度分析：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">时间复杂度：O(n)，</span><br><span class="line">我们把包含有 n 个元素的列表遍历两次。由于哈希表将查找时间缩短到 O(1)，所以时间复杂度为 O(n)</span><br><span class="line"></span><br><span class="line">空间复杂度：O(n)</span><br><span class="line">所需的额外空间取决于哈希表中存储的元素数量，该表中存储了 n 个元素。</span><br></pre></td></tr></table></figure>
 
-<p>方法三：一遍哈希表</p>
-<p>事实证明，我们可以一次完成。在进行迭代并将元素插入到表中的同时，我们还会回过头来检查表中是否已经存在当前元素所对应的目标元素。如果它存在，那我们已经找到了对应解，并立即将其返回。</p>
+<h3 id="3-一遍哈希表"><a href="#3-一遍哈希表" class="headerlink" title="3. 一遍哈希表"></a>3. 一遍哈希表</h3><p>事实证明，我们可以一次完成。在进行迭代并将元素插入到表中的同时，我们还会回过头来检查表中是否已经存在当前元素所对应的目标元素。如果它存在，那我们已经找到了对应解，并立即将其返回。</p>
 <p>执行用时：136ms</p>
 <p>内存消耗：9.4mb</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        unordered_map&lt;int,int&gt; m;</span><br><span class="line">        </span><br><span class="line">        for(int i &#x3D; 0;i &lt; nums.size();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            int side &#x3D; target - nums[i];</span><br><span class="line">            if(m.find(side) !&#x3D; m.end())</span><br><span class="line">            &#123;</span><br><span class="line">                return &#123;m[side], i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            m[nums[i]] &#x3D; i;</span><br><span class="line">        &#125;</span><br><span class="line">        return &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; m;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; nums.<span class="built_in">size</span>();i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> side = target - nums[i];</span><br><span class="line">            <span class="keyword">if</span>(m.<span class="built_in">find</span>(side) != m.<span class="built_in">end</span>())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> &#123;m[side], i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            m[nums[i]] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>还有一种貌似用时更快的写法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;int&gt; twoSum(vector&lt;int&gt;&amp; nums, int target) &#123;</span><br><span class="line">        unordered_map&lt;int, int&gt; m;</span><br><span class="line">        vector&lt;int&gt; res;</span><br><span class="line">        for(int i &#x3D; 0; i&lt; nums.size(); ++i)&#123;</span><br><span class="line">            if(m.find(target-nums[i])&#x3D;&#x3D;m.end())&#123;</span><br><span class="line">                m[nums[i]]&#x3D;i;</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                res.push_back(m[target-nums[i]]);</span><br><span class="line">                res.push_back(i);</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
