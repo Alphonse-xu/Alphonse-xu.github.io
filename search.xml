@@ -9,7 +9,8 @@
   <entry>
     <title>C++ Const关键字总结</title>
     <url>/2020/03/20/cppconst/</url>
-    <content><![CDATA[<h1 id="C-Const-关键字"><a href="#C-Const-关键字" class="headerlink" title="C++ Const 关键字"></a>C++ Const 关键字</h1><p>Const 是修饰内置类型变量，自定义对象，成员函数，返回值，函数参数。</p>
+    <content><![CDATA[<h2 id="C-Const-关键字"><a href="#C-Const-关键字" class="headerlink" title="C++ Const 关键字"></a>C++ Const 关键字</h2><p>Const 是修饰内置类型变量，自定义对象，成员函数，返回值，函数参数。</p>
+<p>P.S.更多解释请直接阅读cppreference</p>
 <h2 id="1-内置类型变量"><a href="#1-内置类型变量" class="headerlink" title="1.内置类型变量"></a>1.内置类型变量</h2><p>Const修饰全局变量时，编译器不允许修改定义好的变量。如果修改，则报错。</p>
 <p>Const修饰局部变量时，编译器仍然不允许直接赋值修改，但是可以通过地址修改值。</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>  a = <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span>  *p = (<span class="keyword">int</span>*)&amp;a; <span class="comment">//如果没有显示转换会报错：错误C2440: 无法从“ const int *”转换为“int * ”</span></span><br><span class="line">*p = <span class="number">8</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;a;</span><br></pre></td></tr></table></figure>
@@ -66,10 +67,57 @@
       </tags>
   </entry>
   <entry>
-    <title>C++ Impl</title>
+    <title>C++编程方法：Pimpl</title>
     <url>/2020/03/09/cppimpl/</url>
-    <content><![CDATA[<h1 id="C-编程模式：Impl"><a href="#C-编程模式：Impl" class="headerlink" title="C++编程模式：Impl"></a>C++编程模式：Impl</h1><p>最近参与制作游戏需要跨平台，发现windows和ps4的API完全不可以通用。为了代码复用，学习了一种编程模式Impl，可以较好的解决这个问题。</p>
-<h2 id="什么是Impl"><a href="#什么是Impl" class="headerlink" title="什么是Impl"></a>什么是Impl</h2>]]></content>
+    <content><![CDATA[<p>最近参与制作游戏需要跨平台，发现windows和ps4的API有很大的不同。为了代码复用，学习了Pimpl方法，可以较好的解决这个问题。</p>
+<p>P.S.更多解释请直接阅读cppreference</p>
+<h2 id="什么是Pimpl"><a href="#什么是Pimpl" class="headerlink" title="什么是Pimpl"></a>什么是Pimpl</h2><p>Pimpl（pointer to implementation）是“指向实现的指针”。</p>
+<p>Pimpl利用了c++的一个特点，即可以将类的数据成员定义为指向某个已经声明过的类型的指针，这里的类型仅仅作为名字引入，并没有被完整地定义。</p>
+<p>该技巧可以避免在头文件中暴露私有细节，因此是促进API接口与实现保持完全分离的重要机制。</p>
+<p>此外由于声明了析构函数，导致默认的移动构造/赋值函数不能生成，若默认行为符合自己的需求，则需显式声明 = default（当只在.h里，Impl是个不完整的类型，所以无法在.h类直接 = default，而是在.h声明，在.cpp使= default）</p>
+<p>若需要给类提供拷贝性质的函数，需要额外花点心思处理std::unique_ptr(该智能指针不支持拷贝)。</p>
+<p><img src="https://canaan.website/source/images/pimpl.png" alt="pimpl 示例"></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// my_class.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">my_class</span> &#123;</span></span><br><span class="line">    <span class="comment">//  ... 所有的公有/保护接口都可以放在这里 ...</span></span><br><span class="line">    my_class();</span><br><span class="line">    ~my_class();</span><br><span class="line">    my_class(my_class&amp;&amp; v);    <span class="comment">//移动构造</span></span><br><span class="line">    my_class&amp; <span class="keyword">operator</span>=(my_class&amp;&amp; v);    <span class="comment">//移动赋值</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Impl</span>;</span> </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;Impl&gt; pimpl;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// my_class.cpp</span></span><br><span class="line"><span class="comment">// ...include其它要依赖的头文件...</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"my_class.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">my_class</span>:</span>:Impl &#123;</span><br><span class="line">  <span class="comment">// 在这里定义所有私有变量和方法(换句话说是my_class类的具体实现细节内容)</span></span><br><span class="line">  <span class="comment">// 现在可以改变实现，而依赖my_class.h的其他类无需重新编译...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">my_class::my_class():pimpl(<span class="built_in">std</span>::make_unique&lt;Impl&gt;())&#123;</span><br><span class="line">    <span class="comment">// ...初始化pimpl... </span></span><br><span class="line">&#125;</span><br><span class="line">my_class::~my_class() = <span class="keyword">default</span>;</span><br><span class="line">my_class::my_class(my_class&amp;&amp; v) = <span class="keyword">default</span>;</span><br><span class="line">my_class::my_class&amp; <span class="keyword">operator</span>=(my_class&amp;&amp; v) = <span class="keyword">default</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p>例如“自动定时器”的API， 它是一个具名对象，当对象被销毁时打印出其生存时间。</p>
+<p>AutoTimer.h 如下:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> _WIN32</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AutoTimer</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">explicit</span> <span class="title">AutoTimer</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> name)</span></span>;</span><br><span class="line">        ~AutoTimer();</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="function"><span class="keyword">double</span> <span class="title">getElapsed</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">string</span> mName;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifdef</span> _WIN32</span></span><br><span class="line">        DWORD mStartTime;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">timeval</span> <span class="title">mStartTime</span>;</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>从上面的h文件可知，该API暴露了定时器在不同平台上存储的底层细节，利用Pimpl特性， 可轻易的隐藏掉这些底层实现的细节， 利用Pimpl特效后新的h文件如下:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AutoTimer</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">AutoTimer</span><span class="params">(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span>&amp; name)</span></span>;</span><br><span class="line">    ~AutoTimer();</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Impl</span>;</span></span><br><span class="line">    Impl* mImpl;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>新API更简洁， 没有任何平台相关的预处理指令， 他人也不能通过头文件了解类的任何私有成员。</p>
+<p>现在AutoTimer的功能实现都放在内嵌类Impl中了， 具体的AutoTimer的cpp文件如下:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"AutoTimer.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> _WIN32</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/time.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AutoTimer</span>:</span>:Impl</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">getElapsed</span><span class="params">()</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> _WIN32</span></span><br><span class="line">        <span class="keyword">return</span> (GetTickCount() - mStartTime) / <span class="number">1e3</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">timeval</span> <span class="title">end_time</span>;</span></span><br><span class="line">        gettimeofday(&amp;end_time, <span class="literal">NULL</span>);</span><br><span class="line">        <span class="keyword">double</span> t1 = mStartTime.tv_usec / <span class="number">1e6</span> + mStartTime.tv_sec;</span><br><span class="line">        <span class="keyword">double</span> t2 = end_time.tv_usec / <span class="number">1e6</span> + end_time.tv_sec;</span><br><span class="line">        <span class="keyword">return</span> t2 - t1;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">string</span> mName;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> _WIN32</span></span><br><span class="line">    DWORD mStartTime;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">timeval</span> <span class="title">mStartTime</span>;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">AutoTimer::AutoTimer(<span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">string</span> &amp;name)</span><br><span class="line">: mImpl(<span class="keyword">new</span> AutoTimer::Impl())</span><br><span class="line">&#123;</span><br><span class="line">    mImpl-&gt;mName = name;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> _WIN32</span></span><br><span class="line">    mImpl-&gt;mStartTime = GetTickCount();</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    gettimeofday(&amp;mImpl-&gt;mStartTime, <span class="literal">NULL</span>);</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">AutoTimer::~AutoTimer()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; mImpl-&gt;mName &lt;&lt; <span class="string">":took "</span> &lt;&lt; mImpl-&gt;getElapsed() &lt;&lt; <span class="string">" secs"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">delete</span> mImpl;</span><br><span class="line">    mImpl = <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将Impl类声明为AutoTimer类的私有内嵌类， 可以避免与该实现相关的符号污染全局命名空间。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="Pimpl的优点"><a href="#Pimpl的优点" class="headerlink" title="Pimpl的优点"></a>Pimpl的优点</h3><ul>
+<li><p>接口和实现的分离，私有成员完全可以隐藏在共有接口之外，给用户一个间接明了的使用接口，尤其适合闭源API设计。</p>
+</li>
+<li><p>降低耦合，对Impl类进行修改，无需重新编译原类</p>
+</li>
+<li><p>加速编译，减少原类不必要的头文件的依赖</p>
+</li>
+<li><p>更好的二进制兼容性。二进制兼容性指的是在升级库文件的时候（windows下的dll， uinx下的so），不必重新编译使用这个库的可执行文件或使用这个库的其他库文件，程序的功能不被破坏</p>
+</li>
+<li><p>可使用惰性分配技术：类的某部分实现可以写成按需分配或者实际使用时再分配，从而节省资源</p>
+</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li><p>添加了一层封装， 可能进入性能问题</p>
+</li>
+<li><p>代码可读性降低</p>
+</li>
+</ul>
+<hr>
+<h2 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h2><p><a href="https://zh.cppreference.com/w/cpp/language/pimpl" target="_blank" rel="noopener">https://zh.cppreference.com/w/cpp/language/pimpl</a></p>
+<p><a href="https://www.jianshu.com/p/b2be3fb1e1d1" target="_blank" rel="noopener">https://www.jianshu.com/p/b2be3fb1e1d1</a> </p>
+<p><a href="https://www.cnblogs.com/KillerAery/p/9539705.html" target="_blank" rel="noopener">https://www.cnblogs.com/KillerAery/p/9539705.html</a></p>
+<p><a href="https://goodspeedlee.blogspot.com/2016/01/c-pimpl.html" target="_blank" rel="noopener">https://goodspeedlee.blogspot.com/2016/01/c-pimpl.html</a></p>
+<p><a href="https://blog.csdn.net/lihao21/article/details/47610309" target="_blank" rel="noopener">https://blog.csdn.net/lihao21/article/details/47610309</a></p>
+]]></content>
       <categories>
         <category>CPP</category>
       </categories>
@@ -402,27 +450,36 @@
 <li>QQ音乐</li>
 <li>Potplayer</li>
 <li>KODI</li>
-<li>OBS </li>
+<li>OBS</li>
+<li>Foobar2000</li>
 </ol>
 <h2 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h2><ol>
 <li>扣钉</li>
-<li>Visual Studio </li>
+<li>Visual Studio</li>
 <li>Visual Studio Code</li>
 <li>Git</li>
 <li>Unity3D</li>
 <li>Unreal</li>
+<li>EgretTools</li>
+</ol>
+<h2 id="音乐创作"><a href="#音乐创作" class="headerlink" title="音乐创作"></a>音乐创作</h2><ol>
+<li>FamiTracker（8Bit音乐创作）</li>
+<li>Bfxr（独立游戏最佳伴侣，生成一万种8bit音效不带重样）</li>
 </ol>
 <h2 id="办公编辑"><a href="#办公编辑" class="headerlink" title="办公编辑"></a>办公编辑</h2><ol>
 <li>OFFICE全家桶</li>
 <li>Google全家桶</li>
 <li>Adobe全家桶</li>
 <li>格式工厂</li>
+<li>Parsec(远程桌面)</li>
 </ol>
 <h2 id="翻译"><a href="#翻译" class="headerlink" title="翻译"></a>翻译</h2><p>1.有道词典<br>2.欧陆词典</p>
 <h2 id="快捷工具"><a href="#快捷工具" class="headerlink" title="快捷工具"></a>快捷工具</h2><ol>
 <li>搜索Everything</li>
 <li>Ditto</li>
-<li></li>
+<li>AntRenamer（简易）</li>
+<li>BulkRenameUtility（强大）</li>
+<li>SpaceSniffer</li>
 </ol>
 <h2 id="其他工具"><a href="#其他工具" class="headerlink" title="其他工具"></a>其他工具</h2><ol>
 <li>Rescue pro</li>

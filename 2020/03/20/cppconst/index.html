@@ -99,7 +99,8 @@
       
 
       
-      <h1 id="C-Const-关键字"><a href="#C-Const-关键字" class="headerlink" title="C++ Const 关键字"></a>C++ Const 关键字</h1><p>Const 是修饰内置类型变量，自定义对象，成员函数，返回值，函数参数。</p>
+      <h2 id="C-Const-关键字"><a href="#C-Const-关键字" class="headerlink" title="C++ Const 关键字"></a>C++ Const 关键字</h2><p>Const 是修饰内置类型变量，自定义对象，成员函数，返回值，函数参数。</p>
+<p>P.S.更多解释请直接阅读cppreference</p>
 <h2 id="1-内置类型变量"><a href="#1-内置类型变量" class="headerlink" title="1.内置类型变量"></a>1.内置类型变量</h2><p>Const修饰全局变量时，编译器不允许修改定义好的变量。如果修改，则报错。</p>
 <p>Const修饰局部变量时，编译器仍然不允许直接赋值修改，但是可以通过地址修改值。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>  a = <span class="number">7</span>;</span><br><span class="line"><span class="keyword">int</span>  *p = (<span class="keyword">int</span>*)&amp;a; <span class="comment">//如果没有显示转换会报错：错误C2440: 无法从“ const int *”转换为“int * ”</span></span><br><span class="line">*p = <span class="number">8</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;a;</span><br></pre></td></tr></table></figure>
@@ -179,7 +180,7 @@
     
       <a href="/2020/03/09/cppimpl/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">C++ Impl</div>
+        <div class="article-nav-title">C++编程方法：Pimpl</div>
       </a>
     
   </nav>
