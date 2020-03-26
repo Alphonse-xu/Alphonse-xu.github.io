@@ -63,6 +63,128 @@
     
     
     
+    <article id="post-githubPic" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/26/githubPic/"
+    >githubPic</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/26/githubPic/" class="article-date">
+  <time datetime="2020-03-26T04:16:09.000Z" itemprop="datePublished">2020-03-26</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canaan.website/2020/03/26/githubPic/" data-id="ck88q0s5q000164u97r6s60o4"
+        class="article-share-link">分享</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-cppstatic" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/03/26/cppstatic/"
+    >cppstatic</a
+  >
+</h2>
+  
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/03/26/cppstatic/" class="article-date">
+  <time datetime="2020-03-26T04:15:29.000Z" itemprop="datePublished">2020-03-26</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      
+      
+      <!-- 打赏 -->
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://canaan.website/2020/03/26/cppstatic/" data-id="ck88q0s5d000064u91zpz57oa"
+        class="article-share-link">分享</a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-gameInterview" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -287,7 +409,7 @@
 <p>该技巧可以避免在头文件中暴露私有细节，因此是促进API接口与实现保持完全分离的重要机制。</p>
 <p>此外由于声明了析构函数，导致默认的移动构造/赋值函数不能生成，若默认行为符合自己的需求，则需显式声明 = default（当只在.h里，Impl是个不完整的类型，所以无法在.h类直接 = default，而是在.h声明，在.cpp使= default）</p>
 <p>若需要给类提供拷贝性质的函数，需要额外花点心思处理std::unique_ptr(该智能指针不支持拷贝)。</p>
-<p><img src="https://canaan.website/source/images/pimpl.png" alt="pimpl 示例"></p>
+<p><img src="raw.githubusercontent.com/Alphonse-xu/Alphonse-xu.github.io/master/image/pimpl.png" alt="pimpl"></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// my_class.h</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">my_class</span> &#123;</span></span><br><span class="line">    <span class="comment">//  ... 所有的公有/保护接口都可以放在这里 ...</span></span><br><span class="line">    my_class();</span><br><span class="line">    ~my_class();</span><br><span class="line">    my_class(my_class&amp;&amp; v);    <span class="comment">//移动构造</span></span><br><span class="line">    my_class&amp; <span class="keyword">operator</span>=(my_class&amp;&amp; v);    <span class="comment">//移动赋值</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Impl</span>;</span> </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">unique_ptr</span>&lt;Impl&gt; pimpl;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// my_class.cpp</span></span><br><span class="line"><span class="comment">// ...include其它要依赖的头文件...</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"my_class.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">my_class</span>:</span>:Impl &#123;</span><br><span class="line">  <span class="comment">// 在这里定义所有私有变量和方法(换句话说是my_class类的具体实现细节内容)</span></span><br><span class="line">  <span class="comment">// 现在可以改变实现，而依赖my_class.h的其他类无需重新编译...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">my_class::my_class():pimpl(<span class="built_in">std</span>::make_unique&lt;Impl&gt;())&#123;</span><br><span class="line">    <span class="comment">// ...初始化pimpl... </span></span><br><span class="line">&#125;</span><br><span class="line">my_class::~my_class() = <span class="keyword">default</span>;</span><br><span class="line">my_class::my_class(my_class&amp;&amp; v) = <span class="keyword">default</span>;</span><br><span class="line">my_class::my_class&amp; <span class="keyword">operator</span>=(my_class&amp;&amp; v) = <span class="keyword">default</span>;</span><br></pre></td></tr></table></figure>
@@ -1011,148 +1133,14 @@
 
 </article>
     
-    <article id="post-helloworld" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/01/25/helloworld/"
-    >helloworld</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/01/25/helloworld/" class="article-date">
-  <time datetime="2020-01-25T23:00:57.475Z" itemprop="datePublished">2020-01-26</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <p>欢迎来到我的博客！我是迦南君。我将会在这里分享我的一切！</p>
-<p>Welcome to my blog,powered by<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is my first post. The theme is Ayer.If you like it,follow it-<a href="https://shen-yu.gitee.io/2019/ayer/" target="_blank" rel="noopener">Ayer</a>.</p>
-<p>Thank my dear girlfriend Rosena,with your company and love.</p>
-
-      
-      <!-- 打赏 -->
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://canaan.website/2020/01/25/helloworld/" data-id="ck7kvpc3e0008r8u98o422e0x"
-        class="article-share-link">分享</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-about" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/01/24/about/"
-    >about me</a
-  >
-</h2>
-  
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/01/24/about/" class="article-date">
-  <time datetime="2020-01-24T23:13:46.008Z" itemprop="datePublished">2020-01-25</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%85%B6%E4%BB%96/">其他</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <p>GitHub: alphonse-xu</p>
-<p>Email: <a href="mailto:canaan@canaan.website">canaan@canaan.website</a></p>
-
-      
-      <!-- 打赏 -->
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://canaan.website/2020/01/24/about/" data-id="ck7kvpc3c0006r8u9ee6zbpex"
-        class="article-share-link">分享</a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
   </article>
   
 
+  
+  <nav class="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+  </nav>
   
 </section>
 </div>
