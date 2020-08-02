@@ -9,42 +9,59 @@ categories:
 Windows系统缺少一些软件，还不能做到开箱即用。总结一些常用软件，方便重装系统。
 
 ## 影音
+
 1. 网易云音乐
 2. QQ音乐
 3. Potplayer
 4. KODI
-5. OBS 
+5. OBS
+6. Foobar2000
 
 ## 编程
+
 1. 扣钉
-2. Visual Studio 
+2. Visual Studio
 3. Visual Studio Code
 4. Git
 5. Unity3D
 6. Unreal
+7. EgretTools
+
+## 音乐创作
+
+1. FamiTracker（8Bit音乐创作）
+2. Bfxr（独立游戏最佳伴侣，生成一万种8bit音效不带重样）
 
 ## 办公编辑
+
 1. OFFICE全家桶
 2. Google全家桶
 3. Adobe全家桶
 4. 格式工厂
+5. Parsec(远程桌面)
 
 ## 翻译
+
 1.有道词典
 2.欧陆词典
 
 ## 快捷工具
+
 1. 搜索Everything
 2. Ditto
-3.
+3. AntRenamer（简易）
+4. BulkRenameUtility（强大）
+5. SpaceSniffer
 
 ## 其他工具
+
 1. Rescue pro
 2. VM Virtualbox
 3. bandi zip
 4. Discord
 
 ## 游戏
+
 1. GOG
 2. Steam
 3. UBI
@@ -53,6 +70,7 @@ Windows系统缺少一些软件，还不能做到开箱即用。总结一些常�
 6. Origin
 
 ## 下载工具
+
 1. 百度网盘
 2. 迅雷极速版
 3. Free download manager
